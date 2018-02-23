@@ -1,0 +1,26 @@
+# auth0-password-grant/config - a configuration file for auth0-password-grant
+# Default location of this file: $HOME/.config/auth0-password-grant/config.
+#
+# In this file you can specify defaults for auth0-password-grant parameters.
+# If you don't pass a value for a parameter using the appropriate option
+# specified in `man auth0-password-grant`, a default value will be sourced
+# from this configuration file.
+#
+# If you're seeing this file for the first time, you have probably just run
+# "make install". In this case, edit the file to your liking, save and quit
+# your editor to continue.
+#
+# Configurable variables:
+#   USER_NAME
+#   PASSWORD
+#   AUTH_URL
+#   CLIENT_ID
+#   REALM
+#   AUDIENCE
+
+USER_NAME=
+PASSWORD=
+AUTH_URL=
+CLIENT_ID=
+REALM=
+AUDIENCE=
