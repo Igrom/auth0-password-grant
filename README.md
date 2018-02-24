@@ -14,18 +14,18 @@ Igrom@foo: ~$ !! | base64 -d | jq
 }
 ```
 
-Provisioning Auth0 access tokens for API debugging purposes is a commonly done task. As most tokens soon expire, it is often necessary to provision multiple access tokens in a single session. This tool drastically reduces the effort needed to do all required this.
+Provisioning Auth0 access tokens for making manual API calls is a commonly done task. As most tokens soon expire, it is often necessary to provision multiple access tokens in a single session. This tool aims to reduce the tediousness of doing this.
 
-It is possible to pass all required request parameters: username, password, auth0 domain URL and more through command-line options, but it is more convenient to save them in a config file that auth0-password-grant reads on execution.
+It is possible to pass all required request parameters: **username, password, auth0 domain URL and more** through command-line options, but it is more convenient to save them in a config file that auth0-password-grant reads on execution.
 
 Features:
 - store settings for quick token procurement
-- prepend token with "Bearer " for valid Authorization tokens
-- copy token to clipboard (if xclip (Linux/X11) or pbcopy (Mac) is installed)
-- comprehensive man pages
+- prepend token with **"Bearer "** for valid Authorization tokens
+- **copy token to clipboard** (if xclip (Linux/X11) or pbcopy (Mac) is installed)
+- comprehensive **man** pages
 
 ## How to install
-Mac OS users (homebrew):
+Mac OS users (Homebrew):
 ```sh
 brew install jq
 
@@ -43,12 +43,12 @@ make install
 ## Recommendations
 For common workflows it is recommended to create the following shorthand:
 
-  alias tok='auth0-password-grant -BX'
+  `alias tok='auth0-password-grant -BX'`
 
 to quickly construct a valid Authorization header and put it in the clipboard.
 
 ## Author
-Igor Sowinski <igorsowinski.mail@gmail.com>
+Igor Sowinski \<igorsowinski.mail@gmail.com\>
 
 ## COPYRIGHT
 Copyright © 2018 Igor Sowinski.  Licensed under the 3-clause BSD license.
