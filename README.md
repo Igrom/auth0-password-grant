@@ -1,78 +1,54 @@
-auth0-password-grant(1)
-=======================
+# auth0-password-grant
+CLI Auth0 access tokens.
 
+auth0-password-grant is a command-line tool to quickly provision new Auth0 access tokens using the Resource Owner Password Grant.
 
-NAME
-----
-auth0-password-grant - get an Auth0 access token through the password grant
+```sh
+Igrom@foo: ~$ auth0-password-grant -u igrom@example.com -p 123456
+eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6InlNR2cwTUllT09NZUdnR3dJd0lpTUlNTWdNd3lwR2dJZ0lpaTRnTUlNRWdJTUNNR2dFd01NIn0gCg==
+Igrom@foo: ~$ !! | base64 -d | jq
+{
+  "typ": "JWT",
+  "alg": "RS256",
+  "kid: "yMGg0MIeOOMeGgGwIwIiMIMMgMwypGgIgIii4gMIMEgIMCMGgEwMM"
+}
+```
 
+Provisioning Auth0 access tokens for API debugging purposes is a commonly done task. As most tokens soon expire, it is often necessary to provision multiple access tokens in a single session. This tool drastically reduces the effort needed to do all required this.
 
-SYNOPSIS
---------
-auth0-password-grant [-BX] [-u user_name] [-p password] [-a auth_url] [-c client_id] [-r realm] [-d audience]
+It is possible to pass all required request parameters: username, password, auth0 domain URL and more through command-line options, but it is more convenient to save them in a config file that auth0-password-grant reads on execution.
 
+Features:
+- store settings for quick token procurement
+- prepend token with "Bearer " for valid Authorization tokens
+- copy token to clipboard (if xclip (Linux/X11) or pbcopy (Mac) is installed)
+- comprehensive man pages
 
-DESCRIPTION
------------
-Requests an access token from Auth0 using the Resource Owner Password Grant.
+## How to install
+Mac OS users (homebrew):
+```sh
+brew install jq
 
-Provisioning Auth0 access tokens for API debugging purposes is a commonly done task. As most tokens soon expire, it is often necessary to provision multiple access tokens in a single session. This tool lets you quickly get an access token from the command line and optionally copy it to clipboard for pasting into another application.
+brew tap Igrom/tap
+brew install auth0-password-grant
+```
 
-It is possible to pass request parameters through options. If an option isn't present, auth0-password-grant falls back on values specified in a configuration file. An error is raised if any request parameter isn't specified.
+Linux:
+```sh
+git clone https://github.com/Igrom/auth0-password-grant.git
+cd auth0-password-grant
+make install
+```
 
+## Recommendations
+For common workflows it is recommended to create the following shorthand:
 
-OPTIONS
--------
--u user_name
-	Specify the username.
-
--p password
-	Specify the password.
-
--a auth_url
-	Specify the Auth0 domain.
-
--c client_id
-	Specify the client ID.
-
--r realm
-	Specify the realm.
-
--d audience
-	Specify the audience.
-
-Other options:
-
--B	Prepend the token with the string "Bearer ".
-
--X	If xclip or pbcopy is installed, copy the token to the clipboard.
-
-
-FILES
------
-~/.config/auth0-password-grant/config
-	User-specific configuration file. See auth0-password-grant(5) for further details.
-
-
-RECOMMENDATIONS
----------------
-For common workflows it is recommended to create the following alias:
-
-	alias tok='auth0-password-grant -BX'
+  alias tok='auth0-password-grant -BX'
 
 to quickly construct a valid Authorization header and put it in the clipboard.
 
-
-AUTHOR
-------
+## Author
 Igor Sowinski <igorsowinski.mail@gmail.com>
 
-
-COPYRIGHT
----------
+## COPYRIGHT
 Copyright © 2018 Igor Sowinski.  Licensed under the 3-clause BSD license.
-
-
-SEE ALSO
---------
-auth0-password-grant(5)

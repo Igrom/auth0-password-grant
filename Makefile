@@ -10,6 +10,7 @@ main_install:
 	sudo chmod +x /usr/local/bin/auth0-password-grant
 	mkdir -p $(CONFIG_PATH)
 	cp -i config $(CONFIG_PATH)
+	chmod u+x $(CONFIG_PATH)/config
 	$(EDITOR) $(CONFIG_PATH)/config
 
 doc:
