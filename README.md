@@ -37,7 +37,7 @@ Linux:
 ```sh
 git clone https://github.com/Igrom/auth0-password-grant.git
 cd auth0-password-grant
-make install
+./linux-install.sh
 ```
 
 ## Recommendations
